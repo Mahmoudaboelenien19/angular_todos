@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --main-clr: #de2821;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  transition: 0.3s;
+}
+
+button.outline {
+  background-color: transparent;
+  border: var(--main-clr) solid 2px;
+  padding: 5px 8px;
+  color: white;
+}
+button.outline:hover {
+  border: white solid 2px;
+  background: white;
+  color: var(--main-clr);
+}
