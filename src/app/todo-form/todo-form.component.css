@@ -1,0 +1,14 @@
+.todo-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0;
+  padding: 0;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.todo-form button {
+  background: var(--main-clr);
+  height: 40px;
+  color: white;
+}

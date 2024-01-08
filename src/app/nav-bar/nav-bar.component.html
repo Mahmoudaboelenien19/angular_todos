@@ -4,9 +4,29 @@
       <img src="assets/logo.png" />
     </a>
   </div>
-  <button class="login outline">
-    <a href="#" (click)="$event.preventDefault(); router.navigate(['login'])"
-      >Login
-    </a>
-  </button>
+  <div class="nav-btns-par">
+    <div
+      *ngIf="isAuthenticated; then authenticated; else notAuthenticated"
+    ></div>
+    <ng-template class="user-auth" #authenticated>
+      <p>{{ username }}</p>
+      <button class="logout outline" (click)="logout()">
+        <a
+          href="#"
+          (click)="$event.preventDefault(); router.navigate(['login'])"
+          >Log out
+        </a>
+      </button>
+    </ng-template>
+
+    <ng-template #notAuthenticated>
+      <button class="login outline">
+        <a
+          href="#"
+          (click)="$event.preventDefault(); router.navigate(['login'])"
+          >Login
+        </a>
+      </button>
+    </ng-template>
+  </div>
 </nav>

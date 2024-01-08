@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 export type User = {
   id?: number;
-  name: string;
+  username: string;
   email: string;
   password: string;
 };

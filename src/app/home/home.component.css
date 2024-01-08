@@ -1,0 +1,8 @@
+.todo-container {
+  background: black;
+  width: 90%;
+  max-width: 500px;
+  height: 400px;
+  border-radius: 5px;
+  padding: 30px;
+}

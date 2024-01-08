@@ -1,0 +1,17 @@
+.filters {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  gap: 10px;
+  text-transform: lowercase;
+  padding: 4px;
+}
+
+.filter {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.filter.active {
+  opacity: 1;
+}
