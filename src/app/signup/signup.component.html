@@ -1,5 +1,10 @@
 <div class="container">
-  <form action="" [formGroup]="signup" autocomplete="off">
+  <form
+    action=""
+    [formGroup]="signup"
+    autocomplete="off"
+    (submit)="$event.preventDefault(); signupSubmit()"
+  >
     <h1>Register Now. !</h1>
     <p class="txt-light">
       Welcome! Please enter your details below to create an account.
@@ -122,6 +127,7 @@
         >
       </div>
     </div>
+
     <button class="outline">sign up</button>
     <div>
       <span class="txt-light"> have an account? </span>

@@ -1,13 +1,18 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "user1",
-      "email": "",
-      "password": ""
+      "id": "18aa",
+      "username": "mahmoud",
+      "email": "m@gmail.com",
+      "password": "m@gmail.com"
+    },
+    {
+      "id": "faba",
+      "username": "mahmoud",
+      "email": "mm@gmail.com",
+      "password": "123456789"
     }
   ],
-
   "todos": [
     {
       "content": "todo1",

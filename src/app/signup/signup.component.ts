@@ -10,7 +10,9 @@ import {
 } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { Title } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { User, UserService } from '../user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +22,12 @@ import { RouterModule } from '@angular/router';
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
-  constructor(private title: Title) {}
+  constructor(
+    private title: Title,
+    private userService: UserService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     this.title.setTitle('Sign up');
   }
@@ -50,7 +57,29 @@ export class SignupComponent {
     };
   }
   signupSubmit() {
-    console.log(this.signup.valid);
-    console.log(this.signup.value);
+    if (this.signup.valid) {
+      const { confirm, ...user } = this.signup.value;
+
+      //i do this pattern as i use json-server   these should be done on server
+      this.userService.checkEmail(user.email as string).subscribe((u) => {
+        if (u.length) {
+          this.toastr.warning('you already registered', '', {
+            positionClass: 'toast-bottom-left',
+          });
+        } else {
+          this.userService.Signup(user as User).subscribe((data: User) => {
+            if (data?.id) {
+              this.signup.reset();
+              this.router.navigate(['login'], {
+                queryParams: { email: data.email },
+              });
+              this.toastr.success('you successfully registered', '', {
+                positionClass: 'toast-bottom-left',
+              });
+            }
+          });
+        }
+      });
+    }
   }
 }
