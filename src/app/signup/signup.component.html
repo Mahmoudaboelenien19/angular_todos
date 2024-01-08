@@ -1,1 +1,132 @@
-<p>signup works!</p>
+<div class="container">
+  <form action="" [formGroup]="signup" autocomplete="off">
+    <h1>Register Now. !</h1>
+    <p class="txt-light">
+      Welcome! Please enter your details below to create an account.
+    </p>
+    <div class="input-el">
+      <div class="inp-par">
+        <input
+          type="text"
+          placeholder="username"
+          name="username"
+          formControlName="username"
+        />
+        <mat-icon
+          class="icon"
+          [ngClass]="signup.get('username')?.value ? 'opacity' : ''"
+          >person</mat-icon
+        >
+      </div>
+
+      <div
+        class="error"
+        *ngIf="
+          signup.get('username')?.invalid && signup.get('username')?.touched
+        "
+      >
+        <small *ngIf="signup.get('username')?.errors?.['required']"
+          >add your username</small
+        >
+        <small *ngIf="signup.get('username')?.errors?.['minlength']"
+          >your username must be at least 8 letters</small
+        >
+        <small *ngIf="signup.get('username')?.errors?.['maxlength']"
+          >your username must be at most 16 letters</small
+        >
+      </div>
+    </div>
+
+    <div class="input-el">
+      <div class="inp-par">
+        <input
+          type="email"
+          placeholder="email"
+          name="email"
+          formControlName="email"
+        />
+        <mat-icon
+          class="icon"
+          [ngClass]="signup.get('email')?.value ? 'opacity' : ''"
+          >alternate_email</mat-icon
+        >
+      </div>
+
+      <div
+        class="error"
+        *ngIf="signup.get('email')?.invalid && signup.get('email')?.touched"
+      >
+        <small *ngIf="signup.get('email')?.errors?.['required']"
+          >add your email</small
+        >
+        <small *ngIf="signup.get('email')?.errors?.['email']"
+          >add a vaild email</small
+        >
+      </div>
+    </div>
+
+    <div class="input-el">
+      <div class="inp-par">
+        <input
+          type="password"
+          placeholder="password"
+          name="password"
+          formControlName="password"
+        />
+        <mat-icon
+          class="icon"
+          [ngClass]="signup.get('password')?.value ? 'opacity' : ''"
+          >fingerprint</mat-icon
+        >
+      </div>
+
+      <div
+        class="error"
+        *ngIf="
+          signup.get('password')?.invalid && signup.get('password')?.touched
+        "
+      >
+        <small *ngIf="signup.get('password')?.errors?.['required']"
+          >add your password</small
+        >
+        <small *ngIf="signup.get('password')?.errors?.['minlength']"
+          >your password must be at least 8 letters</small
+        >
+        <small *ngIf="signup.get('password')?.errors?.['maxlength']"
+          >your password must be at most 16 letters</small
+        >
+      </div>
+    </div>
+
+    <div class="input-el">
+      <div class="inp-par">
+        <input
+          type="password"
+          placeholder="confirm password"
+          name="confirm"
+          formControlName="confirm"
+        />
+        <mat-icon
+          class="icon"
+          [ngClass]="signup.get('confirm')?.value ? 'opacity' : ''"
+          >fingerprint</mat-icon
+        >
+      </div>
+
+      <div
+        class="error"
+        *ngIf="signup.get('confirm')?.invalid && signup.get('confirm')?.touched"
+      >
+        <small *ngIf="signup.hasError('passwordMismatch', 'confirm')"
+          >Passwords do not match</small
+        >
+      </div>
+    </div>
+    <button class="outline">sign up</button>
+    <div>
+      <span class="txt-light"> have an account? </span>
+
+      <a [routerLink]="'/login'" class="form-link">log in</a>
+    </div>
+  </form>
+</div>

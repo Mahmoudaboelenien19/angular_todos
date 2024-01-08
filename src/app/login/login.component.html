@@ -1,1 +1,78 @@
-<p>login works!</p>
+<div class="container">
+  <form
+    autocomplete="off"
+    action=""
+    [formGroup]="login"
+    (submit)="$event.preventDefault(); loginSubmit()"
+  >
+    <h1>Welcome Back. !</h1>
+    <p class="txt-light">
+      Please enter your email and password below to access your account.
+    </p>
+
+    <div class="input-el">
+      <div class="inp-par">
+        <input
+          type="email"
+          placeholder="email"
+          name="email"
+          formControlName="email"
+        />
+        <mat-icon
+          class="icon"
+          [ngClass]="login.get('email')?.value ? 'opacity' : ''"
+          >alternate_email</mat-icon
+        >
+      </div>
+
+      <div
+        class="error"
+        *ngIf="login.get('email')?.invalid && login.get('email')?.touched"
+      >
+        <small *ngIf="login.get('email')?.errors?.['required']"
+          >add your email</small
+        >
+        <small *ngIf="login.get('email')?.errors?.['email']"
+          >add a vaild email</small
+        >
+      </div>
+    </div>
+
+    <div class="input-el">
+      <div class="inp-par">
+        <input
+          type="password"
+          placeholder="password"
+          name="password"
+          formControlName="password"
+        />
+        <mat-icon
+          class="icon"
+          [ngClass]="login.get('password')?.value ? 'opacity' : ''"
+          >fingerprint</mat-icon
+        >
+      </div>
+      <div
+        class="error"
+        *ngIf="login.get('password')?.invalid && login.get('password')?.touched"
+      >
+        <small *ngIf="login.get('password')?.errors?.['required']"
+          >add your password</small
+        >
+        <small *ngIf="login.get('password')?.errors?.['minlength']"
+          >your password must be at least 8 letters</small
+        >
+        <small *ngIf="login.get('password')?.errors?.['maxlength']"
+          >your password must be at most 16 letters</small
+        >
+      </div>
+    </div>
+
+    <button class="outline">log in</button>
+    <div>
+      <span class="txt-light"> don't have an account? </span>
+
+      <a [routerLink]="'/signup'" class="form-link">sign up</a>
+    </div>
+  </form>
+</div>
