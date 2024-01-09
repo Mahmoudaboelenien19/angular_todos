@@ -4,7 +4,13 @@
       (addTodoEv)="todos.unshift($event)"
       (updateToDo)="updateTodo($event)"
     ></todo-form>
-    <filters (changeFilter)="applyFilters($event)" [filter]="filter"></filters>
+    <div *ngIf="todos.length; then showFilters"></div>
+    <ng-template #showFilters>
+      <filters
+        (changeFilter)="applyFilters($event)"
+        [filter]="filter"
+      ></filters>
+    </ng-template>
 
     <todos [todos]="shownTodos"></todos>
   </div>

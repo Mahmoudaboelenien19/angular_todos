@@ -8,8 +8,8 @@ import { Todo } from '../shared/models/Todo';
 export class TodoService {
   constructor(private http: HttpClient) {}
 
-  getTodos() {
-    return this.http.get('http://localhost:4000/todos');
+  getTodos(userId: string) {
+    return this.http.get('http://localhost:4000/todos?userId=' + userId);
   }
   addTodo(todo: Todo) {
     return this.http.post('http://localhost:4000/todos', todo);

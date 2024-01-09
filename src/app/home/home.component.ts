@@ -36,19 +36,21 @@ export class HomeComponent {
   }
   ngOnInit(): void {
     this.title.setTitle('home');
-    this.todoService.getTodos().subscribe((data) => {
-      this.todos = (data as Todo[])?.reverse();
-    });
+    this.todoService
+      .getTodos(localStorage.getItem('userId') || '')
+      .subscribe((data) => {
+        this.todos = (data as Todo[])?.reverse();
+      });
   }
   get shownTodos() {
     if (this.filter === 'active') {
       return this.todos.filter((todo) => !todo.isCompleted);
     } else if (this.filter === 'completed') {
       return this.todos.filter((todo) => todo.isCompleted);
-    } else {
-      return this.todos;
     }
+    return this.todos;
   }
+
   updateTodo({ id, data }: any) {
     const index = this.todos.findIndex((todo) => todo.id == id);
     this.todos[index] = data;
