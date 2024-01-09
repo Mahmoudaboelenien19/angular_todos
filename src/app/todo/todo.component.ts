@@ -26,4 +26,7 @@ export class TodoComponent {
         this.events.emit('checkTodo', { old: this.todo, new: data })
       );
   }
+  updateTodo(id: string) {
+    this.events.emit('updateTodo', this.todo);
+  }
 }

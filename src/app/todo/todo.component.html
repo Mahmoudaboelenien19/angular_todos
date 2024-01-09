@@ -5,11 +5,13 @@
   </div>
 
   <div class="todo-btns">
-    <button>
+    <button (click)="updateTodo(todo!.id!)">
       <mat-icon class="edit">edit</mat-icon>
-      <button (click)="checkTodo(todo!.id!)">
-        <mat-icon class="done">done_all</mat-icon>
-      </button>
+    </button>
+    <button (click)="checkTodo(todo!.id!)">
+      <mat-icon class="done">done_all</mat-icon>
+    </button>
+    <button>
       <mat-icon class="del" (click)="deleteTodo(todo!.id!)">delete</mat-icon>
     </button>
   </div>

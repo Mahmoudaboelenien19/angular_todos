@@ -20,4 +20,7 @@ export class TodoService {
   checkTodo(id: string, obj: Todo) {
     return this.http.patch(`http://localhost:4000/todos/${id}`, obj);
   }
+  updateTodo(id: string, obj: Todo) {
+    return this.http.patch(`http://localhost:4000/todos/${id}`, obj);
+  }
 }

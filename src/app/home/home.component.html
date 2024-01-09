@@ -1,6 +1,9 @@
 <div class="container">
   <div class="todo-container">
-    <todo-form (addTodoEv)="todos.unshift($event)"></todo-form>
+    <todo-form
+      (addTodoEv)="todos.unshift($event)"
+      (updateToDo)="updateTodo($event)"
+    ></todo-form>
     <filters></filters>
 
     <todos [todos]="shownTodos"></todos>

@@ -43,4 +43,9 @@ export class HomeComponent {
   get shownTodos() {
     return this.todos;
   }
+  updateTodo({ id, data }: any) {
+    console.log({ id, data });
+    const index = this.todos.findIndex((todo) => todo.id == id);
+    this.todos[index] = data;
+  }
 }
