@@ -1,4 +1,9 @@
-<form action="" class="todo-form">
-  <input type="text" />
+<form
+  action=""
+  class="todo-form"
+  (submit)="$event.preventDefault(); addTodo()"
+  autocomplete="off"
+>
+  <input type="text" name="todo" [(ngModel)]="inpVal" />
   <button>{{ btnContent }}</button>
 </form>

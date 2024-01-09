@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TodoComponent } from '../todo/todo.component';
 import { CommonModule } from '@angular/common';
 import { Todo } from '../../shared/models/Todo';
@@ -10,24 +10,8 @@ import { Todo } from '../../shared/models/Todo';
   templateUrl: './todos.component.html',
   styleUrl: './todos.component.css',
 })
-export class TodosComponent {
-  todos: Todo[] = [
-    {
-      content: 'todo1',
-      id: 1,
-      userId: 1,
-      isCompleted: false,
-      createdAt: '2022-11-22T10:24:37.000Z',
-    },
-    {
-      content: 'todo1',
-      id: 1,
-      userId: 1,
-      isCompleted: false,
-      createdAt: '2022-11-22T10:24:37.000Z',
-    },
-  ];
-  get shownTodos() {
-    return this.todos;
-  }
+export class TodosComponent implements OnInit {
+  @Input() todos: Todo[] = [];
+  constructor() {}
+  ngOnInit(): void {}
 }

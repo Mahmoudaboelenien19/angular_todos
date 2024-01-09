@@ -3,7 +3,8 @@
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 0;
-  padding: 0;
+  padding: 30px;
+  padding-bottom: 0;
   width: 100%;
   margin-bottom: 10px;
 }

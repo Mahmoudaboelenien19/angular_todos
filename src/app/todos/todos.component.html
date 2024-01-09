@@ -1,5 +1,12 @@
 <div class="todos-par">
-  <div *ngFor="let todo of shownTodos">
-    <todo [todo]="todo"></todo>
+  <div *ngIf="!todos.length; else hasTodos">
+    <div class="no-data">no todos to show</div>
+  </div>
+  <div>
+    <ng-template #hasTodos>
+      <div *ngFor="let todo of todos">
+        <todo [todo]="todo"></todo>
+      </div>
+    </ng-template>
   </div>
 </div>

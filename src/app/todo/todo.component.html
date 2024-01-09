@@ -1,16 +1,16 @@
 <div class="todo">
   <div class="todo-content">
-    <p>{{ todo.content }}</p>
+    <p [ngClass]="todo.isCompleted ? 'checked' : ''">{{ todo.content }}</p>
     <p class="date">{{ todo.createdAt }}</p>
   </div>
 
   <div class="todo-btns">
     <button>
       <mat-icon class="edit">edit</mat-icon>
-      <button>
+      <button (click)="checkTodo(todo!.id!)">
         <mat-icon class="done">done_all</mat-icon>
       </button>
-      <mat-icon class="del">delete</mat-icon>
+      <mat-icon class="del" (click)="deleteTodo(todo!.id!)">delete</mat-icon>
     </button>
   </div>
 </div>
