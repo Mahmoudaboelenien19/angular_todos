@@ -17,7 +17,7 @@ import { EventService } from '../event.service';
 })
 export class HomeComponent {
   todos: Todo[] = [];
-
+  filter: string = 'all';
   constructor(
     private title: Title,
     private todoService: TodoService,
@@ -41,11 +41,19 @@ export class HomeComponent {
     });
   }
   get shownTodos() {
-    return this.todos;
+    if (this.filter === 'active') {
+      return this.todos.filter((todo) => !todo.isCompleted);
+    } else if (this.filter === 'completed') {
+      return this.todos.filter((todo) => todo.isCompleted);
+    } else {
+      return this.todos;
+    }
   }
   updateTodo({ id, data }: any) {
-    console.log({ id, data });
     const index = this.todos.findIndex((todo) => todo.id == id);
     this.todos[index] = data;
+  }
+  applyFilters(filter: string) {
+    this.filter = filter;
   }
 }

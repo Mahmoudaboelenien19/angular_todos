@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'filters',
@@ -9,5 +9,12 @@ import { Component } from '@angular/core';
   styleUrl: './filters.component.css',
 })
 export class FiltersComponent {
-  filters = ['All', 'Active', 'Completed'];
+  @Output() changeFilter = new EventEmitter<any>();
+  @Input() filter: string = 'all';
+  filters = ['all', 'active', 'completed'];
+
+  applyNewFilter(filter: string) {
+    this.changeFilter.emit(filter);
+    console.log(filter);
+  }
 }

@@ -1,5 +1,11 @@
 <div class="filters">
-  <div *ngFor="let filter of filters" class="filter">
-    {{ filter }}
+  <div *ngFor="let filter0 of filters">
+    <span
+      class="filter"
+      (click)="applyNewFilter(filter0)"
+      [ngClass]="filter === filter0 ? 'active' : ''"
+    >
+      {{ filter0 }}
+    </span>
   </div>
 </div>

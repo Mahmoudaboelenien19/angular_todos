@@ -11,6 +11,7 @@
 .filter {
   opacity: 0.5;
   cursor: pointer;
+  transition: 0.3s;
 }
 .filter.active {
   opacity: 1;
